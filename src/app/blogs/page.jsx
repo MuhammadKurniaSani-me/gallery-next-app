@@ -1,4 +1,4 @@
-import About from "@/(components)/About";
+import Hero from "@/(components)/hero";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -16,13 +16,10 @@ export default async function MainBlog() {
 
     return (
         <>
-            <About />
-            {/* <ul>
-                {blogs.map((blog) => (
-                    <li key={blog.id}>{blog.title}</li>
-                ))}
-            </ul> */}
             <main className="space-y-10">
+
+                <Hero />
+                
                 <section
                     id="welcome"
                     className="bg-center bg-no-repeat bg-cover bg-welcome-jumbotron-alfasarana bg-gray-700 bg-blend-multiply sm:bg-gray-700"

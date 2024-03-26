@@ -2,13 +2,14 @@ import Image from "next/image";
 import bannerShop from "../../public/images/banner-toko.webp";
 import frontOffice from "../../public/images/front-office.webp";
 import activityEmp1 from "../../public/images/activity-1.webp";
+import Hero from "@/(components)/hero";
 
 const MainCards = [
     {
         id: "C1",
         name: "Kaos",
-        url: "./public/gallery/t-shirts.html",
-        imgSrc: "/public/images/shirts/abu-abu-muda.webp",
+        url: "./galleries/shirts",
+        imgSrc: "/images/shirts/abu-abu-muda.webp",
         imgAlt: "Kaos Abu-abu Muda",
         description: `Kami adalah salah satu produsen kaos di
     Surabaya. Kami memproduksi kaos polos Cotton
@@ -19,8 +20,8 @@ const MainCards = [
     {
         id: "C2",
         name: "Tas",
-        url: "./gallery/Bags.jsx",
-        imgSrc: "/public/images/bags/spunbonds/tas-10.jpg",
+        url: "./galleries/bags",
+        imgSrc: "/images/bags/spunbonds/tas-10.jpg",
         imgAlt: "Tas Spunbond",
         description: `Kami adalah salah satu pencetus produsen
     kustom tas di Surabaya. Kami memproduksi tas
@@ -32,8 +33,8 @@ const MainCards = [
     {
         id: "C3",
         name: "DTF",
-        url: "./public/gallery/dtf.html",
-        imgSrc: "/public/images/printed-DTF.webp",
+        url: "./galleries/DTFs",
+        imgSrc: "/images/printed-DTF.webp",
         imgAlt: "Print DTF",
         description: `Kami adalah salah satu produsen kaos di
     Surabaya. Kami memproduksi kaos polos Cotton
@@ -44,19 +45,32 @@ const MainCards = [
     {
         id: "C4",
         name: "BLog",
-        url: "./public/gallery/dtf.html",
-        imgSrc: "/public/images/undraw_undraw_undraw_notebook.png",
+        url: "./galleries/blogs",
+        imgSrc: "/images/undraw_undraw_undraw_notebook.png",
         imgAlt: "Ilustrasi Blog by Undraw",
         description: `Yuk cek blog kami untuk tips, trik, & pengetahuan tentang tas atau kaos bersama kami ya!`,
     },
     {
         id: "C5",
         name: "Sosial Media",
-        url: "#",
-        imgSrc: "/public/images/undraw_Social_dashboard.png",
+        url: "./galleries/social-media",
+        imgSrc: "/images/undraw_Social_dashboard.png",
         imgAlt: "Ilustrasi Sosial Media by Undraw",
         description: `Yuk cek sosial media kami untuk cari referensi kaos & tas kesukaan kamu ya`,
     },
+];
+
+const CompanyAdvantages = [
+    {
+        id: "A1",
+        description: "Melayani pesanan partai (massal) maupun indi (satuan).",
+    },
+    {
+        id: "A2",
+        description:
+            "Berpengalaman lama dibidang konveksi kaos didukung Tenaga dan SDM yang handal.",
+    },
+    { id: "A3", description: "Harga yang kompetitif." },
 ];
 
 function ShowGoogleMap() {
@@ -97,10 +111,15 @@ function CardItem({ card }) {
     return (
         <div class="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href={card.url}>
-                <Image 
-                    className="h-8 me-1"
-                    width={32}
-                    height={32}
+                <Image
+                    className="rounded-t-lg"
+                    sizes="100vw"
+                    width={300}
+                    height={500}
+                    style={{
+                        width: "100%",
+                        height: "auto",
+                    }}
                     src={card.imgSrc}
                     alt={card.imgAlt}
                 />
@@ -199,10 +218,10 @@ function ListItem({ value }) {
     );
 }
 
-function CompanyAdvantagesList() {
+function CompanyAdvantagesList({ companyAdvantagesLists }) {
     return (
         <ul class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 text-left text-gray-500 dark:text-gray-400">
-            {CompanyAdvantages.map((companyAdvantage) => (
+            {companyAdvantagesLists.map((companyAdvantage) => (
                 <ListItem key={companyAdvantage.id} value={companyAdvantage} />
             ))}
         </ul>
@@ -212,7 +231,7 @@ function CompanyAdvantagesList() {
 function CompanyBanner() {
     return (
         <div class="flex items-center justify-center my-6 rounded bg-gray-50 dark:bg-gray-800">
-            <Image 
+            <Image
                 class="rounded-md"
                 src={bannerShop}
                 alt="Banner CV Focus Alfasarana"
@@ -225,28 +244,28 @@ function CompanyWorkImgs() {
     return (
         <div class="flex flex-col space-y-2 sm:grid grid-cols-2 gap-4 mb-4">
             <div class="flex items-center justify-center rounded aspect-video bg-gray-50 dark:bg-gray-800">
-                <Image 
+                <Image
                     class="rounded-md"
                     src={frontOffice}
                     alt="Front Office Focus Alfasarana"
                 />
             </div>
             <div class="flex items-center justify-center rounded aspect-video bg-gray-50 dark:bg-gray-800">
-                <Image 
+                <Image
                     class="rounded-md"
                     src={bannerShop}
                     alt="Divisi Jahit CV Focus Alfasarana"
                 />
             </div>
             <div class="flex items-center justify-center rounded aspect-video bg-gray-50 dark:bg-gray-800">
-                <Image 
+                <Image
                     class="rounded-md"
                     src={activityEmp1}
                     alt="Aktivitas pegawai 1 CV Focus Alfasarana"
                 />
             </div>
             <div class="flex items-center justify-center rounded aspect-video bg-gray-50 dark:bg-gray-800">
-                <Image 
+                <Image
                     class="rounded-md"
                     src={activityEmp1}
                     alt="Aktivitas pegawai 1 CV Focus Alfasarana"
@@ -411,7 +430,9 @@ function AboutCompany() {
         <section class="pt-20 pb-2 px-4 mx-auto text-center lg:py-4">
             <MainTitleH2 title={"Tentang Kami"} />
             <div class="pb-4 px-4 mx-auto text-center space-y-10 lg:py-8">
-                <CompanyAdvantagesList />
+                <CompanyAdvantagesList
+                    companyAdvantagesLists={CompanyAdvantages}
+                />
                 <SectionCompanyProfile />
                 <SectionAboutCompany />
             </div>
@@ -423,7 +444,7 @@ export default function Home() {
     return (
         <>
             <main>
-                {/* <Hero /> */}
+                <Hero />
                 <CompanyProduct />
                 <CompanyMap />
                 <AboutCompany />
