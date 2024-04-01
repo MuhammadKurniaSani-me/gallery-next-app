@@ -443,7 +443,7 @@ function AboutCompany() {
 export default function Home() {
     return (
         <>
-            <main>
+            <main className="mx-auto">
                 <Hero />
                 <CompanyProduct />
                 <CompanyMap />

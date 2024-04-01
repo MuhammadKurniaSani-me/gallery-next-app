@@ -27,10 +27,9 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body
-                className={`${inter.className} bg-slate-800 text-slate-100 container mx-auto `}
+                className={`${inter.className} dark:bg-gray-900 text-slate-100`}
             >
               <NavBar navLinks={Links} webLogo={webLogo} />
-              
                 {children}
             <Footer />
             </body>
